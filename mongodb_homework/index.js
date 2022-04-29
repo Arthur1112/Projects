@@ -1,8 +1,11 @@
 import mongodb from 'mongodb';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 //TODO: add your mongo URL
 //Remove URL when uploading to github 
-const client = new mongodb.MongoClient('mongodb+srv://admin:Password@cluster0.bfg4u.mongodb.net?retryWrites=true&w=majority');
+const client = new mongodb.MongoClient(process.env.MONGO_URL);
 
 await client.connect();
 
@@ -43,3 +46,5 @@ const videoGames = db.collection('Video Games');
 // console.log("Updated")
 
 // await client.close()
+
+console.log("Connnected ")
